@@ -8,7 +8,7 @@
       "email": "pratims091@gmail.com"
     }
   },
-  "host": "localhost:9000",
+  "host": "secret-shelf-83694.herokuapp.com",
   "basePath": "/api/v1",
   "schemes": [
     "https",
