@@ -17,7 +17,6 @@
     "lint": "npx eslint --cache . --ext js",
     "lintfix": "npx eslint --cache . --ext js --fix",
     "prestart": "npm install --production",
-    "prepare": "husky install",
     "test": "jest"
   },
   "dependencies": {
