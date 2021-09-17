@@ -1,0 +1,144 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Simple RESTful APIs built on Express JS and mondodb",
+    "version": "1.0.0",
+    "title": "Sample App",
+    "contact": {
+      "email": "pratims091@gmail.com"
+    }
+  },
+  "host": "localhost:9000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/records": {
+      "get": {
+        "summary": "Search records",
+        "description": "Search records by created at date and count",
+        "operationId": "searchRecords",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "start date",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "end date",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "minCount",
+            "in": "query",
+            "description": "min count",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "maxCount",
+            "in": "query",
+            "description": "max count",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 0
+                },
+                "msg": {
+                  "type": "string",
+                  "example": "Successful"
+                },
+                "records": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Record"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 422
+                },
+                "msg": {
+                  "type": "string",
+                  "example": "Invalid request"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string",
+                        "example": "Invalid value"
+                      },
+                      "param": {
+                        "type": "string",
+                        "example": "startDate"
+                      },
+                      "location": {
+                        "type": "string",
+                        "example": "query"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Record": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "example": "TAKwGc6Jr4i8Z487"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-01-28T01:22:14.398Z"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "example": 120
+        }
+      }
+    }
+  }
+}
