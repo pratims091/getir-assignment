@@ -13,7 +13,7 @@
     "build": "babel src --out-dir dist --copy-files",
     "start": "node ./dist/server.js",
     "dev": "NODE_ENV=development nodemon --exec babel-node -- -r dotenv/config ./src/server.js",
-    "dev-debug": "NODE_ENV=development nodemon --exec babel-node --inspect -- ./src/server.js",
+    "dev-debug": "NODE_ENV=development nodemon --exec babel-node --inspect -r dotenv/config -- ./src/server.js",
     "lint": "npx eslint --cache . --ext js",
     "lintfix": "npx eslint --cache . --ext js --fix",
     "prestart": "npm install --production",
@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "express-validator": "^6.12.0",
     "helmet": "^3.21.1",
-    "lodash": "^4.17.14",
     "mongodb": "^4.1.2",
     "swagger-ui-express": "^4.1.6"
   },

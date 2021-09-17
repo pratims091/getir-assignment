@@ -1,6 +1,6 @@
 # Simple express js + mongodb API
 
-A barebones Node.js app using Express JS and mondodb
+A barebones Node.js app using Express JS and mongodb
 
 ## Requirements
 
@@ -19,7 +19,7 @@ $ npm run dev
 
 ## Documentation
 
-For API documentation and playgroud visit [https://secret-shelf-83694.herokuapp.com/api-docs/](https://secret-shelf-83694.herokuapp.com/api-docs/).
+For API documentation and playground visit [https://secret-shelf-83694.herokuapp.com/api-docs/](https://secret-shelf-83694.herokuapp.com/api-docs/).
 
 **Sample request:**
 
