@@ -28,6 +28,14 @@ export const index = async ({
 
     const aggregate = [
       {
+        $match: {
+          createdAt: {
+            $gte: new Date(startDate),
+            $lte: new Date(endDate),
+          },
+        },
+      },
+      {
         $project: {
           _id: 0,
           key: 1,
@@ -37,10 +45,6 @@ export const index = async ({
       },
       {
         $match: {
-          createdAt: {
-            $gte: new Date(startDate),
-            $lte: new Date(endDate),
-          },
           totalCount: {
             $gte: minCount,
             $lte: maxCount,

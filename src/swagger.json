@@ -16,7 +16,7 @@
   ],
   "paths": {
     "/records": {
-      "get": {
+      "post": {
         "summary": "Search records",
         "description": "Search records by created at date and count",
         "operationId": "searchRecords",
@@ -25,34 +25,12 @@
         ],
         "parameters": [
           {
-            "name": "startDate",
-            "in": "query",
-            "description": "start date",
+            "in": "body",
+            "name": "body",
             "required": true,
-            "type": "string",
-            "format": "date"
-          },
-          {
-            "name": "endDate",
-            "in": "query",
-            "description": "end date",
-            "required": true,
-            "type": "string",
-            "format": "date"
-          },
-          {
-            "name": "minCount",
-            "in": "query",
-            "description": "min count",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "maxCount",
-            "in": "query",
-            "description": "max count",
-            "required": true,
-            "type": "integer"
+            "schema": {
+              "$ref": "#/definitions/RequestRecord"
+            }
           }
         ],
         "responses": {
@@ -73,7 +51,7 @@
                 "records": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/Record"
+                    "$ref": "#/definitions/ResponseRecord"
                   }
                 }
               }
@@ -121,7 +99,7 @@
     }
   },
   "definitions": {
-    "Record": {
+    "ResponseRecord": {
       "type": "object",
       "properties": {
         "key": {
@@ -139,6 +117,40 @@
           "example": 120
         }
       }
+    },
+    "RequestRecord": {
+      "type": "object",
+      "required": [
+        "startDate",
+        "endDate",
+        "minCount",
+        "maxCount"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "start date",
+          "type": "string",
+          "format": "date",
+          "example": "2017-01-01"
+        },
+        "endDate": {
+          "description": "end date",
+          "type": "string",
+          "format": "date",
+          "example": "2021-12-31"
+        },
+        "minCount": {
+          "description": "min count",
+          "type": "integer",
+          "example": 100
+        },
+        "maxCount": {
+          "description": "max count",
+          "type": "integer",
+          "example": 300
+        }
+      }
+
     }
   }
 }

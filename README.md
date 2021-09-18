@@ -24,7 +24,14 @@ For API documentation and playground visit [https://secret-shelf-83694.herokuapp
 **Sample request:**
 
 ```sh
-$ curl --location --request GET 'https://secret-shelf-83694.herokuapp.com/api/v1/records?startDate=2017-01-01&endDate=2021-12-31&minCount=0&maxCount=300'
+curl --location --request POST 'https://secret-shelf-83694.herokuapp.com/api/v1/records' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "startDate": "2017-01-01",
+    "endDate": "2021-12-31",
+    "minCount": 100,
+    "maxCount": 500
+}'
 ```
 
 ## Tests

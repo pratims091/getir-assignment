@@ -10,7 +10,7 @@ export const index = async (req, res) => {
       endDate,
       minCount,
       maxCount,
-    } = req.query;
+    } = req.body;
 
     const records = await service.index({
       startDate,
